@@ -284,6 +284,22 @@ npm run service:start:daemon   # 后台运行
 npm run service:status
 ```
 
+### 第六步（可选）：GCP 手动部署（Cloud Run，无需 GitHub Actions）
+
+如果你是 fork 项目并选择手动部署到 GCP，可直接执行：
+
+```bash
+PROJECT_ID=spark-485303 REGION=us-central1 SERVICE_NAME=claude-relay-service VPC_CONNECTOR=crs-conn4 CONNECTOR_SUBNET=crs-connector-subnet ./scripts/deploy-gcp-cloud-run.sh
+```
+
+如果后续要跟上游更新后再手动部署：
+
+```bash
+git fetch upstream main
+git merge upstream/main
+PROJECT_ID=spark-485303 REGION=us-central1 SERVICE_NAME=claude-relay-service VPC_CONNECTOR=crs-conn4 CONNECTOR_SUBNET=crs-connector-subnet ./scripts/deploy-gcp-cloud-run.sh
+```
+
 ---
 
 ## 🐳 Docker 部署
